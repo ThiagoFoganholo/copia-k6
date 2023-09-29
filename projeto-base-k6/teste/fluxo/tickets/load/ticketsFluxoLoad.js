@@ -70,7 +70,7 @@ export function teardown(responseData) {
     const ids = responseData.responseData.map(item => item._id);
     ids.forEach(id =>{
         //console.log(`TearDowns deletando o id : ${id}`)
-        //const res = baseRest.delete(ENDPOINTS.TICKETS + `/${id}`)
+        const res = baseRest.delete(ENDPOINTS.TICKETS + `/${id}`)
         baseChecks.checkStatusCode(res, 200);
     })
     console.log(id)
