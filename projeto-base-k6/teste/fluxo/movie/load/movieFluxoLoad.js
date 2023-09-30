@@ -52,7 +52,7 @@ export default function () {
     const responsePostMovie = baseRest.post(ENDPOINTS.MOVIES, randomMovie, { monitor: false , 'Content-Type': 'application/json' });
     
     baseChecks.checkStatusCode(responsePostMovie, 201);
-    baseChecks.checkResponseTime(responsePostMovie, 3000);
+    baseChecks.checkResponseTime(responsePostMovie, 1000);
 
     const resGet = baseRest.get(ENDPOINTS.MOVIES);
     const responseBody = JSON.parse(resGet.body);
@@ -86,7 +86,7 @@ export default function () {
 
     const responsePutMovie = baseRest.put(ENDPOINTS.MOVIES + "/" + `${randomId}`, payloadPutMovie, { monitor: false , 'Content-Type': 'application/json' });    
     baseChecks.checkStatusCode(responsePutMovie, 200);
-    baseChecks.checkResponseTime(responsePutMovie, 3000);
+    baseChecks.checkResponseTime(responsePutMovie, 1000);
 
     sleep(1); 
     return{movieID}
@@ -135,6 +135,8 @@ export function teardown(){
     arrayMoviesIDSemRepeticoes.forEach(id =>{
         //console.log(id)
         const resDelMovie = baseRest.delete(ENDPOINTS.MOVIES + `/${id}`);
+        baseChecks.checkStatusCode(resDelMovie, 200);
+        baseChecks.checkResponseTime(resDelMovie, 1000)
     })
     //.log(responseBody)
     
