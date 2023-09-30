@@ -47,7 +47,7 @@ export default function () {
 
   //console.log(res.json())
   baseChecks.checkStatusCode(res, 200);
-  baseChecks.checkResponseTime(res, 2000);
+  baseChecks.checkResponseTime(res, 300);
 
   sleep(1);
 }

@@ -26,7 +26,7 @@ export default () => {
     //console.log((res.json()));
 
     baseChecks.checkStatusCode(res, 200);
-    baseChecks.checkResponseTime(res, 2000);
+    baseChecks.checkResponseTime(res, 100);
 
     sleep(1);
 }

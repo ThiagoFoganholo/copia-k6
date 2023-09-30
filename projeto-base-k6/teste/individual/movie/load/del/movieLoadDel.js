@@ -35,12 +35,14 @@ export default function () {
 
   const randomMovieID = randomItem(id_array);
 
-  //console.log(randomMovieID);
-
-  const resDelMovie = baseRest.delete(ENDPOINTS.MOVIES + `/${randomMovieID}`);
-
-  baseChecks.checkStatusCode(resDelMovie, 200);
-  baseChecks.checkResponseTime(resDelMovie, 2000);
+  
+  id_array.forEach((id) => {
+    //console.log(id);
+    const resDelMovie = baseRest.delete(ENDPOINTS.MOVIES + `/${id}`);
+    
+    baseChecks.checkStatusCode(resDelMovie, 200);
+    baseChecks.checkResponseTime(resDelMovie, 400);
+  });
   
     sleep(1);
 }
