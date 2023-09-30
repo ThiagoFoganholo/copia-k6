@@ -1,6 +1,6 @@
 import { sleep } from 'k6';
 import { SharedArray } from 'k6/data';
-import {BaseChecks, BaseRest, BaseService, ENDPOINTS, testeConfig} from '../../../../../support/base/baseTest.js'
+import {BaseChecks, BaseRest, BaseService, ENDPOINTS, testeConfig} from '../../../../../../projeto-base-k6/support/base/baseTest.js'
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 import { randomItem } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
@@ -35,12 +35,14 @@ export default function () {
 
   const randomMovieID = randomItem(id_array);
 
-  //console.log(randomMovieID);
-
-  const resDelMovie = baseRest.delete(ENDPOINTS.MOVIES + `/${randomMovieID}`);
-
-  baseChecks.checkStatusCode(resDelMovie, 200);
-  baseChecks.checkResponseTime(resDelMovie, 2000);
+  
+  id_array.forEach((id) => {
+    //console.log(id);
+    const resDelMovie = baseRest.delete(ENDPOINTS.MOVIES + `/${id}`);
+    
+    baseChecks.checkStatusCode(resDelMovie, 200);
+    baseChecks.checkResponseTime(resDelMovie, 400);
+  });
   
     sleep(1);
 }
