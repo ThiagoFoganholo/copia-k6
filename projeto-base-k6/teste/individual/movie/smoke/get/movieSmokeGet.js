@@ -23,8 +23,6 @@ export default () => {
     
     const res = baseRest.get(ENDPOINTS.MOVIES);
 
-    //console.log((res.json())[usersIndex]._id);
-
     baseChecks.checkStatusCode(res, 200);
     baseChecks.checkResponseTime(res, 200);
 
