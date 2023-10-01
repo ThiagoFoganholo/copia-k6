@@ -21,9 +21,6 @@ export function handleSummary(data) {
 }
 export default () => {
 
-    let movieIndex = __ITER % data_movies.length;
-    let user = data_movies[movieIndex];
-    
     const res = baseRest.get(ENDPOINTS.MOVIES);
 
     //console.log((res.json())[usersIndex]._id);

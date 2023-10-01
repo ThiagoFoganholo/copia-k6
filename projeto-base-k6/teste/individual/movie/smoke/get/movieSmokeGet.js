@@ -20,9 +20,6 @@ export function handleSummary(data) {
     };
 }
 export default () => {
-
-    let usersIndex = __ITER % data_movies.length;
-    let user = data_movies[usersIndex];
     
     const res = baseRest.get(ENDPOINTS.MOVIES);
 
