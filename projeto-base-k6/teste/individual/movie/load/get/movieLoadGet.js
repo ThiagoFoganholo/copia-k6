@@ -20,10 +20,11 @@ export function handleSummary(data) {
     };
 }
 export default () => {
-    
-    const res = baseRest.get(ENDPOINTS.MOVIES);
 
-    //console.log((res.json()));
+    const maxPerPage = 20;
+    const res = baseRest.get(ENDPOINTS.MOVIES + `?page=1&pageSize=${maxPerPage}`);
+    console.log(JSON.stringify(res.body,2,null));
+    //console.log(res.status_text);
 
     baseChecks.checkStatusCode(res, 200);
     baseChecks.checkResponseTime(res, 100);
